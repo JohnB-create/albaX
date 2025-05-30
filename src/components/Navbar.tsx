@@ -38,7 +38,7 @@ export const Navbar: React.FC = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-black/90 backdrop-blur-md shadow-md py-2' 
-          : 'bg-transparent py-4'
+          : 'bg-black py-4'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -56,16 +56,16 @@ export const Navbar: React.FC = () => {
             {navLinks.map((link) => (
               link.subLinks ? (
                 <div key={link.name} className="relative group">
-                  <button className="flex items-center px-3 py-2 text-sm font-medium hover:text-teal-600 transition-colors">
+                  <button className="flex items-center px-3 py-2 text-sm font-medium text-white hover:text-teal-400 transition-colors">
                     {link.name}
                     <ChevronDown className="ml-1 w-4 h-4" />
                   </button>
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="absolute left-0 mt-2 w-48 bg-black rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     {link.subLinks.map((subLink) => (
                       <a
                         key={subLink.name}
                         href={subLink.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600"
+                        className="block px-4 py-2 text-sm text-gray-300 hover:bg-black hover:text-teal-400"
                       >
                         {subLink.name}
                       </a>
@@ -76,10 +76,10 @@ export const Navbar: React.FC = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="px-3 py-2 text-sm font-medium hover:text-teal-600 transition-colors relative group"
+                  className="px-3 py-2 text-sm font-medium text-white hover:text-teal-400 transition-colors relative group"
                 >
                   {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               )
             ))}
@@ -91,25 +91,25 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-800"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow-lg">
+        <div className="md:hidden bg-black shadow-lg">
           <nav className="container mx-auto px-4 py-4">
             {navLinks.map((link) => (
               <div key={link.name}>
                 {link.subLinks ? (
                   <div>
                     <button
-                      className="flex items-center justify-between w-full py-2 text-left"
+                      className="flex items-center justify-between w-full py-2 text-left text-white"
                       onClick={() => setIsCapabilitiesOpen(!isCapabilitiesOpen)}
                     >
                       <span className="font-medium">{link.name}</span>
@@ -120,12 +120,12 @@ export const Navbar: React.FC = () => {
                       />
                     </button>
                     {isCapabilitiesOpen && (
-                      <div className="ml-4 border-l border-gray-200 pl-4">
+                      <div className="ml-4 border-l border-gray-700 pl-4">
                         {link.subLinks.map((subLink) => (
                           <a
                             key={subLink.name}
                             href={subLink.href}
-                            className="block py-2 text-gray-600 hover:text-teal-600"
+                            className="block py-2 text-gray-300 hover:text-teal-400"
                             onClick={() => setIsOpen(false)}
                           >
                             {subLink.name}
@@ -137,7 +137,7 @@ export const Navbar: React.FC = () => {
                 ) : (
                   <a
                     href={link.href}
-                    className="block py-2 font-medium hover:text-teal-600"
+                    className="block py-2 font-medium text-white hover:text-teal-400"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
@@ -145,7 +145,7 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className="mt-4 pt-4 border-t border-gray-700">
               <Button variant="primary" className="w-full">
                 Book Consultation
               </Button>
